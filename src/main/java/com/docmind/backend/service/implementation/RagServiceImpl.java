@@ -50,6 +50,7 @@ public class RagServiceImpl implements RagService {
 
     }
 
+    @Override
     public Flux<String> streamQuestionAnswer(ChatRequestDto requestDto) {
         logger.info("Streaming query: '{}'", requestDto.getQuestion());
         List<Document> relevantDocuments = retrieveRelevantDocuments(
@@ -66,7 +67,8 @@ public class RagServiceImpl implements RagService {
                 .content();
     }
 
-    private String buildPrompt(@NotBlank(message = "Question cannot be empty") String question, String contextText) {
+    @Override
+    public String buildPrompt(@NotBlank(message = "Question cannot be empty") String question, String contextText) {
         if (contextText != null && !contextText.isBlank()) {
             return String.format("""
                            Document Context:
