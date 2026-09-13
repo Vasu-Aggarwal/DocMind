@@ -34,6 +34,7 @@ public class DocumentMetadataServiceImpl implements DocumentMetadataService {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
+    @Transactional
     public DocumentResponseDto uploadAndProcess(MultipartFile file) {
         String filename = file.getOriginalFilename() != null ? file.getOriginalFilename() : "document";
         String contentType = file.getContentType() != null ? file.getContentType() : "application/octat-stream";
