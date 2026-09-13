@@ -33,8 +33,8 @@ public class ChatController {
             Authentication authentication
     ) {
 
-        User user=(User)authentication.getPrincipal();
-        ChatResponseDto chatResponseDto = ragService.askQuestion(requestDto,user);
+//        User user=(User)authentication.getPrincipal();
+        ChatResponseDto chatResponseDto = ragService.askQuestion(requestDto);
         return ResponseEntity.ok(
                 ApiResponse.
                         <ChatResponseDto>
@@ -54,8 +54,8 @@ public class ChatController {
             @Valid @RequestBody ChatRequestDto requestDto,
             Authentication authentication
     ){
-        User user= (User) authentication.getPrincipal();
-        return ragService.streamQuestionAnswer(requestDto,user);
+//        User user= (User) authentication.getPrincipal();
+        return ragService.streamQuestionAnswer(requestDto);
     }
 
 
@@ -67,8 +67,8 @@ public class ChatController {
 
     ) {
 
-        User user= (User) authentication.getPrincipal();
-        SearchResultDto results = ragService.searchSimilarChunks(request,user);
+//        User user= (User) authentication.getPrincipal();
+        SearchResultDto results = ragService.searchSimilarChunks(request);
         return ResponseEntity.ok(
                 ApiResponse.
                         <SearchResultDto>
